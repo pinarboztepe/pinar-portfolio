@@ -101,7 +101,7 @@ export default function Home() {
           </h2>
           
           <p className="text-base md:text-md italic mb-2 text-zinc-400 font-mono leading-relaxed">
-            "Coding is my kaleidoscope, revealing the depths of human expression in every pixel."
+            &ldquo;Coding is my kaleidoscope, revealing the depths of human expression in every pixel.&rdquo;
           </p>
 
           
@@ -148,7 +148,7 @@ export default function Home() {
             
             {showAbout && (
               <p className="text-zinc-400 mt-4 leading-relaxed pl-5">
-                I'm Pinar, a passionate full-stack developer based in London with a knack for blending creativity and technology. When I'm not coding, you can find me indulging in my love for art—painting and sculpting my thoughts into reality. As a drummer, I bring rhythm and energy into my life, and I stay active with various sports to keep my mind and body in sync. Always exploring new challenges and pushing the boundaries of what's possible!
+                I&apos;m Pinar, a passionate full-stack developer based in London with a knack for blending creativity and technology. When I&apos;m not coding, you can find me indulging in my love for art—painting and sculpting my thoughts into reality. As a drummer, I bring rhythm and energy into my life, and I stay active with various sports to keep my mind and body in sync. Always exploring new challenges and pushing the boundaries of what&apos;s possible!
               </p>
             )}
           </div>
