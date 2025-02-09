@@ -1,101 +1,271 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import MouseGlow from '../components/MouseGlow';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+  const [showTech, setShowTech] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const [formStatus, setFormStatus] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+
+    // More comprehensive email validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const disposableEmailPatterns = [
+      /@.*\.(xyz|top|work|dev|site|fun|online|tech)$/i,
+      /^[a-z]{1,2}@/i,
+      /^test@/i,
+      /^[0-9]+@/,
+      /^(temp|fake|disposable).*@/i
+    ];
+
+    if (!emailRegex.test(email)) {
+      setFormStatus('Please enter a valid email address.');
+      return;
+    }
+
+    // Check for suspicious patterns
+    if (disposableEmailPatterns.some(pattern => pattern.test(email))) {
+      setFormStatus('Please use a valid business or personal email address.');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://formspree.io/f/mqkropqy', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormStatus('Message sent successfully!');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setFormStatus('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      setFormStatus('Failed to send message. Please try again.');
+    }
+  };
+
+  const projects = {
+    vempo: {
+      name: "Vempo",
+      shortDesc: "A comprehensive vendor management platform.",
+      fullDesc: "This pioneering platform seamlessly fuses music and visual artistry, providing a transformative canvas where sound and sight converge. Immerse yourself in the creative process as you craft and personalize dynamic, synchronized shapes that dance harmoniously with your uploaded music.",
+      image: "/images/vempo.png"
+    },
+    sparePals: {
+      name: "Spare Pals",
+      shortDesc: "An innovative platform for spare parts management.",
+      fullDesc: "Spare Pals offers a unique service catering to various needs, whether for leisurely activities, daily outings, or even hospital visits. The platform provides a seamless booking system where users can check availability and select specific dates and hours needed.",
+      image: "/images/spare_pals.png"
+    }
+  };
+
+  return (
+    <main className="min-h-screen p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative overflow-hidden flex items-center">
+      <MouseGlow />
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Left Column - Profile */}
+        <section className="text-left">
+          <div className="relative w-48 h-48 mb-8">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/images/pinar_profile.jpg"
+              alt="Pinar Boztepe"
+              fill
+              className="rounded-full object-cover shadow-lg border-2 border-zinc-100"
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          </div>
+          
+          <h1 className="text-2xl md:text-2xl font-bold mb-4 text-zinc-100 font-mono tracking-tight">
+            Pinar Boztepe
+          </h1>
+          
+          <h2 className="text-xl md:text-xl font-bold mb-3 text-zinc-100 font-mono tracking-tight">
+            Full-Stack Developer
+          </h2>
+          
+          <p className="text-base md:text-md italic mb-2 text-zinc-400 font-mono leading-relaxed">
+            "Coding is my kaleidoscope, revealing the depths of human expression in every pixel."
+          </p>
+
+          
+
+
+          <div className="flex space-x-6 mt-4">
+            <div className="flex items-center">
+              <span className="text-zinc-100  flex items-center cursor-pointer">
+                <FontAwesomeIcon icon={faLocationDot} size="lg" />
+                <span className="ml-2 text-base">London</span>
+              </span>
+            </div>
+
+            <a
+              href="https://github.com/pinarboztepe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+            >
+              <FontAwesomeIcon icon={faGithubSquare} size="2x" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pinar-boztepe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+            >
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            </a>
+          </div>
+        </section>
+
+        {/* Right Column - Content */}
+        <section className="space-y-12">
+          {/* About Me Section */}
+          <div>
+            <button
+              onClick={() => setShowAbout(!showAbout)}
+              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 transition-colors"
+            >
+              About Me
+            </button>
+            <p className="text-zinc-400">Find out who I am and what I’m all about.</p>
+            
+            {showAbout && (
+              <p className="text-zinc-400 mt-4 leading-relaxed pl-5">
+                I'm Pinar, a passionate full-stack developer based in London with a knack for blending creativity and technology. When I'm not coding, you can find me indulging in my love for art—painting and sculpting my thoughts into reality. As a drummer, I bring rhythm and energy into my life, and I stay active with various sports to keep my mind and body in sync. Always exploring new challenges and pushing the boundaries of what's possible!
+              </p>
+            )}
+          </div>
+
+          {/* Projects Section */}
+          <div>
+            <h2 className="text-xl font-bold mb-3 text-zinc-100 font-mono">Projects</h2>
+            <div className="space-y-4">
+              {Object.entries(projects).map(([key, project]) => (
+                <div key={key} className="space-y-2">
+                  <button
+                    onClick={() => setSelectedProject(selectedProject === key ? null : key)}
+                    className="text-zinc-100 hover:text-zinc-300 font-mono text-lg transition-colors"
+                  >
+                    {project.name}
+                  </button>
+                  <p className="text-sm text-zinc-400">{project.shortDesc}</p>
+                  
+                  {selectedProject === key && (
+                    <div className="mt-4 space-y-4 bg-zinc-900/50 p-4 rounded-lg">
+                      <div className="relative w-full h-40">
+                        <Image
+                          src={project.image}
+                          alt={project.name}
+                          fill
+                          className="rounded-lg object-contain"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                      <p className="text-zinc-400 text-sm text-center">{project.fullDesc}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Technologies & Platforms Section */}
+          <div>
+            <button
+              onClick={() => setShowTech(!showTech)}
+              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 transition-colors"
+            >
+              Technologies & Platforms
+            </button>
+            <p className="text-zinc-400">
+              Explore the technologies and platforms I've worked with, from frontend to backend and tools.
+            </p>
+            
+            {showTech && (
+              <div className="space-y-4 mt-4 pl-5">
+                <p className="text-zinc-400">
+                  <span className="text-zinc-100 font-mono">Frontend:</span> JavaScript, React, Next.js, HTML5, CSS, Tailwind CSS, Figma.
+                </p>
+                <p className="text-zinc-400">
+                  <span className="text-zinc-100 font-mono">Backend:</span> Ruby, Ruby on Rails, SQL, API integration.
+                </p>
+                <p className="text-zinc-400">
+                  <span className="text-zinc-100 font-mono">Tools:</span> Git, GitHub, Heroku, Cloudinary, Bootstrap, PostgreSQL, Cursor AI, Trae AI.
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Contact Section */}
+          <div>
+            <button
+              onClick={() => setShowContact(!showContact)}
+              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 transition-colors"
+            >
+              Contact Me
+            </button>
+            <p className="text-zinc-400">Let's be in touch!</p>
+            
+            {showContact && (
+              <form onSubmit={handleSubmit} className="space-y-3 mt-4 pl-5">
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    className="w-full p-1.5 text-sm bg-zinc-800/50 rounded-lg border border-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                    className="w-full p-1.5 text-sm bg-zinc-800/50 rounded-lg border border-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
+                  />
+                </div>
+                <div>
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    required
+                    rows={3}
+                    className="w-full p-1.5 text-sm bg-zinc-800/50 rounded-lg border border-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="px-3 py-1.5 text-sm bg-zinc-800 text-zinc-100 rounded-lg hover:bg-zinc-700 transition-colors"
+                >
+                  Send Message
+                </button>
+                {formStatus && (
+                  <p className="text-xs text-zinc-400 mt-1">{formStatus}</p>
+                )}
+              </form>
+            )}
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
