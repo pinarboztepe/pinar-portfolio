@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function POST(req: Request) {
+export async function POST() {  // Removed unused req parameter
   try {
     return new Response('Success', { status: 200 });
   } catch {

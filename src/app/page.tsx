@@ -56,7 +56,7 @@ export default function Home() {
       } else {
         setFormStatus('Failed to send message. Please try again.');
       }
-    } catch (error) {
+    } catch (err) {  // Changed from error to err
       setFormStatus('Failed to send message. Please try again.');
     }
   };
