@@ -195,7 +195,7 @@ export default function Home() {
               Technologies & Platforms
             </button>
             <p className="text-zinc-400">
-              Explore the technologies and platforms I've worked with, from frontend to backend and tools.
+              Explore the technologies and platforms I&apos;ve worked with, from frontend to backend and tools.
             </p>
 
             {showTech && (
