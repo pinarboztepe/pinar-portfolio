@@ -56,7 +56,7 @@ export default function Home() {
       } else {
         setFormStatus('Failed to send message. Please try again.');
       }
-    } catch (err) {  // Changed from error to err
+    } catch (_err) { // Changed from error to _err with underscore to indicate unused
       setFormStatus('Failed to send message. Please try again.');
     }
   };
@@ -221,7 +221,8 @@ export default function Home() {
             >
               Contact Me
             </button>
-            <p className="text-zinc-400">Let's be in touch!</p>
+            // Replace straight quotes with HTML entities in text
+            <p className="text-zinc-400">Let&apos;s be in touch!</p>
             
             {showContact && (
               <form onSubmit={handleSubmit} className="space-y-3 mt-4 pl-5">
