@@ -56,7 +56,7 @@ export default function Home() {
       } else {
         setFormStatus('Failed to send message. Please try again.');
       }
-    } catch (_err) { // Changed from error to _err with underscore to indicate unused
+    } catch { // Changed from error to _err with underscore to indicate unused
       setFormStatus('Failed to send message. Please try again.');
     }
   };
@@ -91,20 +91,20 @@ export default function Home() {
               priority
             />
           </div>
-          
+
           <h1 className="text-2xl md:text-2xl font-bold mb-4 text-zinc-100 font-mono tracking-tight">
             Pinar Boztepe
           </h1>
-          
+
           <h2 className="text-xl md:text-xl font-bold mb-3 text-zinc-100 font-mono tracking-tight">
             Full-Stack Developer
           </h2>
-          
+
           <p className="text-base md:text-md italic mb-2 text-zinc-400 font-mono leading-relaxed">
             &ldquo;Coding is my kaleidoscope, revealing the depths of human expression in every pixel.&rdquo;
           </p>
 
-          
+
 
 
           <div className="flex space-x-6 mt-4">
@@ -144,8 +144,8 @@ export default function Home() {
             >
               About Me
             </button>
-            <p className="text-zinc-400">Find out who I am and what I’m all about.</p>
-            
+            <p className="text-zinc-400">Find out who I am and what I&apos;m all about.</p>
+
             {showAbout && (
               <p className="text-zinc-400 mt-4 leading-relaxed pl-5">
                 I&apos;m Pinar, a passionate full-stack developer based in London with a knack for blending creativity and technology. When I&apos;m not coding, you can find me indulging in my love for art—painting and sculpting my thoughts into reality. As a drummer, I bring rhythm and energy into my life, and I stay active with various sports to keep my mind and body in sync. Always exploring new challenges and pushing the boundaries of what&apos;s possible!
@@ -166,7 +166,7 @@ export default function Home() {
                     {project.name}
                   </button>
                   <p className="text-sm text-zinc-400">{project.shortDesc}</p>
-                  
+
                   {selectedProject === key && (
                     <div className="mt-4 space-y-4 bg-zinc-900/50 p-4 rounded-lg">
                       <div className="relative w-full h-40">
@@ -197,7 +197,7 @@ export default function Home() {
             <p className="text-zinc-400">
               Explore the technologies and platforms I've worked with, from frontend to backend and tools.
             </p>
-            
+
             {showTech && (
               <div className="space-y-4 mt-4 pl-5">
                 <p className="text-zinc-400">
@@ -221,9 +221,12 @@ export default function Home() {
             >
               Contact Me
             </button>
-            // Replace straight quotes with HTML entities in text
+            {/*
+              Replace straight quotes with HTML entities in text
+            */}
+
             <p className="text-zinc-400">Let&apos;s be in touch!</p>
-            
+
             {showContact && (
               <form onSubmit={handleSubmit} className="space-y-3 mt-4 pl-5">
                 <div>
