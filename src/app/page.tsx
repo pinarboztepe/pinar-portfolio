@@ -148,7 +148,7 @@ export default function Home() {
 
             {showAbout && (
               <p className="text-zinc-400 mt-4 leading-relaxed">
-                I&apos;m Pinar, a passionate full-stack developer...
+                I&apos;m Pinar, a passionate full-stack developer with a keen eye for detail and a love for creating seamless user experiences. My journey in tech has been driven by curiosity and a desire to build solutions that make a difference. I specialize in crafting responsive web applications using modern technologies, always staying current with the latest industry trends and best practices.
               </p>
             )}
           </div>
