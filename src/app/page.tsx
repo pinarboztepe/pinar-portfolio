@@ -168,8 +168,8 @@ export default function Home() {
                   <p className="text-sm text-zinc-400">{project.shortDesc}</p>
 
                   {selectedProject === key && (
-                    <div className="mt-4 space-y-4 bg-zinc-900/50 p-4 rounded-lg">
-                      <div className="relative w-full h-40">
+                    <>
+                      <div className="relative w-full h-40 mt-4">
                         <Image
                           src={project.image}
                           alt={project.name}
@@ -178,8 +178,8 @@ export default function Home() {
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
                       </div>
-                      <p className="text-zinc-400 text-sm text-center">{project.fullDesc}</p>
-                    </div>
+                      <p className="text-zinc-400 text-sm mt-4">{project.fullDesc}</p>
+                    </>
                   )}
                 </div>
               ))}
