@@ -119,7 +119,7 @@ export default function Home() {
               href="https://github.com/pinarboztepe"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="text-zinc-100 hover:text-zinc-400 hover:scale-110 transition-all duration-300"
             >
               <FontAwesomeIcon icon={faGithubSquare} size="2x" />
             </a>
@@ -127,7 +127,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/pinar-boztepe"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="text-zinc-100 hover:text-zinc-400 hover:scale-110 transition-all duration-300"
             >
               <FontAwesomeIcon icon={faLinkedin} size="2x" />
             </a>
@@ -140,7 +140,7 @@ export default function Home() {
           <div>
             <button
               onClick={() => setShowAbout(!showAbout)}
-              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 transition-colors"
+              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
             >
               About Me
             </button>
@@ -161,7 +161,7 @@ export default function Home() {
                 <div key={key} className="space-y-2">
                   <button
                     onClick={() => setSelectedProject(selectedProject === key ? null : key)}
-                    className="text-zinc-100 hover:text-zinc-300 font-mono text-lg transition-colors"
+                    className="text-zinc-100 hover:text-zinc-300 hover:translate-x-2 font-mono text-lg transition-all duration-300"
                   >
                     {project.name}
                   </button>
@@ -190,7 +190,7 @@ export default function Home() {
           <div>
             <button
               onClick={() => setShowTech(!showTech)}
-              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 transition-colors"
+              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
             >
               Technologies & Platforms
             </button>
@@ -217,7 +217,7 @@ export default function Home() {
           <div>
             <button
               onClick={() => setShowContact(!showContact)}
-              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 transition-colors"
+              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
             >
               Contact Me
             </button>
@@ -258,7 +258,7 @@ export default function Home() {
                 </div>
                 <button
                   type="submit"
-                  className="px-3 py-1.5 text-sm bg-zinc-800 text-zinc-100 rounded-lg hover:bg-zinc-700 transition-colors"
+                  className="px-3 py-1.5 text-sm bg-zinc-800 text-zinc-100 rounded-lg hover:bg-zinc-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                 >
                   Send Message
                 </button>
