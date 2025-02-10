@@ -147,8 +147,8 @@ export default function Home() {
             <p className="text-zinc-400">Find out who I am and what I&apos;m all about.</p>
 
             {showAbout && (
-              <p className="text-zinc-400 mt-4 leading-relaxed pl-5">
-                I&apos;m Pinar, a passionate full-stack developer based in London with a knack for blending creativity and technology. When I&apos;m not coding, you can find me indulging in my love for art—painting and sculpting my thoughts into reality. As a drummer, I bring rhythm and energy into my life, and I stay active with various sports to keep my mind and body in sync. Always exploring new challenges and pushing the boundaries of what&apos;s possible!
+              <p className="text-zinc-400 mt-4 leading-relaxed">
+                I&apos;m Pinar, a passionate full-stack developer...
               </p>
             )}
           </div>
@@ -199,7 +199,7 @@ export default function Home() {
             </p>
 
             {showTech && (
-              <div className="space-y-4 mt-4 pl-5">
+              <div className="space-y-4 mt-4">
                 <p className="text-zinc-400">
                   <span className="text-zinc-100 font-mono">Frontend:</span> JavaScript, React, Next.js, HTML5, CSS, Tailwind CSS, Figma.
                 </p>
@@ -228,7 +228,7 @@ export default function Home() {
             <p className="text-zinc-400">Let&apos;s be in touch!</p>
 
             {showContact && (
-              <form onSubmit={handleSubmit} className="space-y-3 mt-4 pl-5">
+              <form onSubmit={handleSubmit} className="space-y-3 mt-4">
                 <div>
                   <input
                     type="text"
