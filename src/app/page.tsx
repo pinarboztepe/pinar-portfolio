@@ -81,7 +81,7 @@ export default function Home() {
       <MouseGlow />
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left Column - Profile */}
-        <section className="text-left">
+        <section className="text-left sticky top-24 h-fit">
           <div className="relative w-48 h-48 mb-8">
             <Image
               src="/images/pinar_profile.jpg"
