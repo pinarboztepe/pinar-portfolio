@@ -77,12 +77,12 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative overflow-hidden flex items-center">
+    <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative overflow-hidden flex items-center">
       <MouseGlow />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         {/* Left Column - Profile */}
-        <section className="text-left sticky top-24 h-fit">
-          <div className="relative w-48 h-48 mb-8">
+        <section className="text-left lg:sticky lg:top-24 h-fit">
+          <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6 md:mb-8 mx-auto lg:mx-0">
             <Image
               src="/images/pinar_profile.jpg"
               alt="Pinar Boztepe"
@@ -92,22 +92,19 @@ export default function Home() {
             />
           </div>
 
-          <h1 className="text-2xl md:text-2xl font-bold mb-4 text-zinc-100 font-mono tracking-tight">
+          <h1 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-zinc-100 font-mono tracking-tight text-center lg:text-left">
             Pinar Boztepe
           </h1>
 
-          <h2 className="text-xl md:text-xl font-bold mb-3 text-zinc-100 font-mono tracking-tight">
+          <h2 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-zinc-100 font-mono tracking-tight text-center lg:text-left">
             Full-Stack Developer
           </h2>
 
-          <p className="text-base md:text-md italic mb-2 text-zinc-400 font-mono leading-relaxed">
+          <p className="text-sm md:text-base italic mb-2 text-zinc-400 font-mono leading-relaxed text-center lg:text-left">
             &ldquo;Coding is my kaleidoscope, revealing the depths of human expression in every pixel.&rdquo;
           </p>
 
-
-
-
-          <div className="flex space-x-6 mt-4">
+          <div className="flex space-x-6 mt-4 justify-center lg:justify-start">
             <div className="flex items-center">
               <span className="text-zinc-100  flex items-center cursor-pointer">
                 <FontAwesomeIcon icon={faLocationDot} size="lg" />
