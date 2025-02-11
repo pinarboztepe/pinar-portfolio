@@ -137,7 +137,7 @@ export default function Home() {
           <div>
             <button
               onClick={() => setShowAbout(!showAbout)}
-              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
+              className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
             >
               About Me
             </button>
@@ -152,13 +152,13 @@ export default function Home() {
 
           {/* Projects Section */}
           <div>
-            <h2 className="text-xl font-bold mb-3 text-zinc-100 font-mono">Projects</h2>
+            <h2 className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono">Projects</h2>
             <div className="space-y-4">
               {Object.entries(projects).map(([key, project]) => (
                 <div key={key} className="space-y-2">
                   <button
                     onClick={() => setSelectedProject(selectedProject === key ? null : key)}
-                    className="text-zinc-100 hover:text-zinc-300 hover:translate-x-2 font-mono text-lg transition-all duration-300"
+                    className="text-zinc-100 hover:text-zinc-300 hover:translate-x-2 font-mono text-md md:text-lg transition-all duration-300"
                   >
                     {project.name}
                   </button>
@@ -187,7 +187,7 @@ export default function Home() {
           <div>
             <button
               onClick={() => setShowTech(!showTech)}
-              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
+              className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
             >
               Technologies & Platforms
             </button>
@@ -214,7 +214,7 @@ export default function Home() {
           <div>
             <button
               onClick={() => setShowContact(!showContact)}
-              className="text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
+              className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
             >
               Contact Me
             </button>
