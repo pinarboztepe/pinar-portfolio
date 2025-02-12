@@ -10,57 +10,11 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [showAbout, setShowAbout] = useState(false);
-  const [showContact, setShowContact] = useState(false);
   const [showTech, setShowTech] = useState(false);
-
-  const [formStatus, setFormStatus] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get('email') as string;
-
-    // More comprehensive email validation
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const disposableEmailPatterns = [
-      /@.*\.(xyz|top|work|dev|site|fun|online|tech)$/i,
-      /^[a-z]{1,2}@/i,
-      /^test@/i,
-      /^[0-9]+@/,
-      /^(temp|fake|disposable).*@/i
-    ];
-
-    if (!emailRegex.test(email)) {
-      setFormStatus('Please enter a valid email address.');
-      return;
-    }
-
-    // Check for suspicious patterns
-    if (disposableEmailPatterns.some(pattern => pattern.test(email))) {
-      setFormStatus('Please use a valid business or personal email address.');
-      return;
-    }
-
-    try {
-      const response = await fetch('https://formspree.io/f/mqkropqy', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setFormStatus('Message sent successfully!');
-        (e.target as HTMLFormElement).reset();
-      } else {
-        setFormStatus('Failed to send message. Please try again.');
-      }
-    } catch { // Changed from error to _err with underscore to indicate unused
-      setFormStatus('Failed to send message. Please try again.');
-    }
-  };
-
+  // Remove showContact state and formStatus state
+  
+  // Remove handleSubmit function
+  
   const projects = {
     vempo: {
       name: "Vempo",
@@ -209,62 +163,8 @@ export default function Home() {
               </div>
             )}
           </div>
-
-          {/* Contact Section */}
-          <div>
-            <button
-              onClick={() => setShowContact(!showContact)}
-              className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
-            >
-              Contact Me
-            </button>
-            {/*
-              Replace straight quotes with HTML entities in text
-            */}
-
-            <p className="text-zinc-400">Let&apos;s be in touch!</p>
-
-            {showContact && (
-              <form onSubmit={handleSubmit} className="space-y-3 mt-4">
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    className="w-full p-1.5 text-sm bg-zinc-800/50 rounded-lg border border-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                    className="w-full p-1.5 text-sm bg-zinc-800/50 rounded-lg border border-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    required
-                    rows={3}
-                    className="w-full p-1.5 text-sm bg-zinc-800/50 rounded-lg border border-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="px-3 py-1.5 text-sm bg-zinc-800 text-zinc-100 rounded-lg hover:bg-zinc-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  Send Message
-                </button>
-                {formStatus && (
-                  <p className="text-xs text-zinc-400 mt-1">{formStatus}</p>
-                )}
-              </form>
-            )}
-          </div>
+          
+          {/* Remove entire Contact Me section */}
         </section>
       </div>
     </main>
