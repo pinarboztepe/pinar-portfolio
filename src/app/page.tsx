@@ -77,11 +77,11 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative overflow-hidden flex items-center">
+    <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative">
       <MouseGlow />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+      <div className="max-w-7xl mx-auto relative">
         {/* Left Column - Profile */}
-        <section className="text-left lg:sticky lg:top-24 h-fit">
+        <section className="lg:fixed lg:w-[400px] text-left">
           <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6 md:mb-8 mx-auto lg:mx-0">
             <Image
               src="/images/pinar_profile.jpg"
@@ -132,7 +132,7 @@ export default function Home() {
         </section>
 
         {/* Right Column - Content */}
-        <section className="space-y-12">
+        <section className="space-y-12 lg:ml-[450px]">
           {/* About Me Section */}
           <div>
             <button
