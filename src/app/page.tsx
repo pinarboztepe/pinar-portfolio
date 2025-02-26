@@ -11,9 +11,6 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [showAbout, setShowAbout] = useState(false);
   const [showTech, setShowTech] = useState(false);
-  // Remove showContact state and formStatus state
-  
-  // Remove handleSubmit function
   
   const projects = {
     vempo: {
@@ -31,11 +28,11 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative">
+    <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative flex">
       <MouseGlow />
       <div className="max-w-7xl mx-auto relative">
         {/* Left Column - Profile */}
-        <section className="lg:fixed lg:w-[400px] text-left">
+        <section className="lg:fixed lg:w-[400px] text-left lg:top-1/2 lg:-translate-y-1/2">
           <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6 md:mb-8 mx-auto lg:mx-0">
             <Image
               src="/images/pinar_profile.jpg"
@@ -86,22 +83,24 @@ export default function Home() {
         </section>
 
         {/* Right Column - Content */}
-        <section className="space-y-12 lg:ml-[450px]">
+        <section className="space-y-10 sm:space-y-12 lg:space-y-16 lg:ml-[600px] py-12 lg:py-0 lg:max-w-[600px] mt-12 lg:mt-24">
           {/* About Me Section */}
-          <div>
-            <button
-              onClick={() => setShowAbout(!showAbout)}
-              className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
-            >
-              About Me
-            </button>
-            <p className="text-zinc-400">Find out who I am and what I&apos;m all about.</p>
+          <div className="relative">
+            <div>
+              <button
+                onClick={() => setShowAbout(!showAbout)}
+                className="text-lg md:text-xl font-bold mb-2 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
+              >
+                About Me
+              </button>
+              <p className="text-zinc-400 mb-4">Find out who I am and what I&apos;m all about.</p>
+            </div>
 
-            {showAbout && (
-              <p className="text-zinc-400 mt-4 leading-relaxed">
+            <div className={`mt-4 transition-all duration-300 ${showAbout ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
+              <p className="text-zinc-400 leading-relaxed">
                 I&apos;m Pinar, a passionate full-stack developer with a keen eye for detail and a love for creating seamless user experiences. My journey in tech has been driven by curiosity and a desire to build solutions that make a difference. I specialize in crafting responsive web applications using modern technologies, always staying current with the latest industry trends and best practices.
               </p>
-            )}
+            </div>
           </div>
 
           {/* Projects Section */}
@@ -120,14 +119,16 @@ export default function Home() {
 
                   {selectedProject === key && (
                     <>
-                      <div className="relative w-full h-40 mt-4">
-                        <Image
-                          src={project.image}
-                          alt={project.name}
-                          fill
-                          className="rounded-lg object-contain"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      <div className="relative w-full h-40 mt-4 pl-4">
+                        <div className="absolute inset-0  rounded-l-lg">
+                          <Image
+                            src={project.image}
+                            alt={project.name}
+                            fill
+                            className="object-contain object-left"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
                       </div>
                       <p className="text-zinc-400 text-sm mt-4">{project.fullDesc}</p>
                     </>
@@ -164,7 +165,7 @@ export default function Home() {
             )}
           </div>
           
-          {/* Remove entire Contact Me section */}
+          {/* Remove entire Contact Me Section */}
         </section>
       </div>
     </main>
