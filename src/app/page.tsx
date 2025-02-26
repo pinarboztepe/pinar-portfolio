@@ -156,7 +156,7 @@ export default function Home() {
                   <span className="text-zinc-100 font-mono">Frontend:</span> JavaScript, React, Next.js, HTML5, CSS, Tailwind CSS, Figma.
                 </p>
                 <p className="text-zinc-400">
-                  <span className="text-zinc-100 font-mono">Backend:</span> Ruby, Ruby on Rails, SQL, API integration.
+                  <span className="text-zinc-100 font-mono">Backend:</span> Node.js, Ruby, Ruby on Rails, SQL, API integration.
                 </p>
                 <p className="text-zinc-400">
                   <span className="text-zinc-100 font-mono">Tools:</span> Git, GitHub, Heroku, Cloudinary, Bootstrap, PostgreSQL, Cursor AI, Trae AI.
