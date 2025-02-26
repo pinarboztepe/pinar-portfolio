@@ -11,27 +11,6 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [showAbout, setShowAbout] = useState(false);
   const [showTech, setShowTech] = useState(false);
-  // Remove showContact state and formStatus state
-  const [showContact, setShowContact] = useState(false);
-  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  
-  
-  // Remove handleSubmit function
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormStatus('sending');
-    
-    try {
-      // For now, just simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setFormStatus('sent');
-      // Clear form
-      const form = e.target as HTMLFormElement;
-      form.reset();
-    } catch (error) {
-      setFormStatus('error');
-    }
-  };
   
   const projects = {
     vempo: {
@@ -49,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative flex items-center">
+    <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative flex">
       <MouseGlow />
       <div className="max-w-7xl mx-auto relative">
         {/* Left Column - Profile */}
@@ -104,17 +83,17 @@ export default function Home() {
         </section>
 
         {/* Right Column - Content */}
-        <section className="space-y-16 lg:ml-[600px] py-12 lg:py-0 lg:max-w-[600px]">
+        <section className="space-y-10 sm:space-y-12 lg:space-y-16 lg:ml-[600px] py-12 lg:py-0 lg:max-w-[600px] mt-12 lg:mt-24">
           {/* About Me Section */}
           <div className="relative">
             <div>
               <button
                 onClick={() => setShowAbout(!showAbout)}
-                className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
+                className="text-lg md:text-xl font-bold mb-2 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
               >
                 About Me
               </button>
-              <p className="text-zinc-400">Find out who I am and what I&apos;m all about.</p>
+              <p className="text-zinc-400 mb-4">Find out who I am and what I&apos;m all about.</p>
             </div>
 
             <div className={`mt-4 transition-all duration-300 ${showAbout ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
@@ -140,14 +119,16 @@ export default function Home() {
 
                   {selectedProject === key && (
                     <>
-                      <div className="relative w-full h-40 mt-4">
-                        <Image
-                          src={project.image}
-                          alt={project.name}
-                          fill
-                          className="rounded-lg object-contain"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      <div className="relative w-full h-40 mt-4 pl-4">
+                        <div className="absolute inset-0  rounded-l-lg">
+                          <Image
+                            src={project.image}
+                            alt={project.name}
+                            fill
+                            className="object-contain object-left"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
                       </div>
                       <p className="text-zinc-400 text-sm mt-4">{project.fullDesc}</p>
                     </>
@@ -184,62 +165,7 @@ export default function Home() {
             )}
           </div>
           
-          {/* Contact Me Section */}
-          <div>
-            <button
-              onClick={() => setShowContact(!showContact)}
-              className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
-            >
-              Contact Me
-            </button>
-            <p className="text-zinc-400">
-              Have a project in mind? Let&apos;s create something amazing together.
-            </p>
-
-            <div className={`mt-4 transition-all duration-300 ${showContact ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-zinc-100 mb-2 font-mono">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full p-2 bg-zinc-800 border border-zinc-700 rounded-md text-zinc-100 focus:outline-none focus:border-zinc-500"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-zinc-100 mb-2 font-mono">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full p-2 bg-zinc-800 border border-zinc-700 rounded-md text-zinc-100 focus:outline-none focus:border-zinc-500"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-zinc-100 mb-2 font-mono">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full p-2 bg-zinc-800 border border-zinc-700 rounded-md text-zinc-100 focus:outline-none focus:border-zinc-500"
-                    required
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="bg-zinc-800 text-zinc-100 px-6 py-2 rounded-md hover:bg-zinc-700 transition-colors duration-300 font-mono"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-          </div>
+          {/* Remove entire Contact Me Section */}
         </section>
       </div>
     </main>
