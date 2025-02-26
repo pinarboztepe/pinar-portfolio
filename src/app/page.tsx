@@ -20,8 +20,17 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('sending');
-    // Add your form submission logic here
-    setFormStatus('sent');
+    
+    try {
+      // For now, just simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setFormStatus('sent');
+      // Clear form
+      const form = e.target as HTMLFormElement;
+      form.reset();
+    } catch (error) {
+      setFormStatus('error');
+    }
   };
   
   const projects = {
