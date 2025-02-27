@@ -11,6 +11,7 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [showAbout, setShowAbout] = useState(false);
   const [showTech, setShowTech] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
   
   const projects = {
     vempo: {
@@ -83,17 +84,17 @@ export default function Home() {
         </section>
 
         {/* Right Column - Content */}
-        <section className="space-y-10 sm:space-y-12 lg:space-y-16 lg:ml-[600px] py-12 lg:py-0 lg:max-w-[600px] mt-12 lg:mt-24">
+        <section className="space-y-16 lg:ml-[600px] py-24 lg:max-w-[600px]">
           {/* About Me Section */}
           <div className="relative">
             <div>
               <button
                 onClick={() => setShowAbout(!showAbout)}
-                className="text-lg md:text-xl font-bold mb-2 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
+                className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
               >
                 About Me
               </button>
-              <p className="text-zinc-400 mb-4">Find out who I am and what I&apos;m all about.</p>
+              <p className="text-zinc-400">Find out who I am and what I&apos;m all about.</p>
             </div>
 
             <div className={`mt-4 transition-all duration-300 ${showAbout ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
@@ -105,8 +106,20 @@ export default function Home() {
 
           {/* Projects Section */}
           <div>
-            <h2 className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono">Projects</h2>
-            <div className="space-y-4">
+            <button
+              onClick={() => {
+                setShowProjects(!showProjects);
+                if (!showProjects) {
+                  setSelectedProject(null);
+                }
+              }}
+              className="text-lg md:text-xl font-bold mb-3 text-zinc-100 font-mono hover:text-zinc-300 hover:translate-x-2 transition-all duration-300"
+            >
+              Projects
+            </button>
+            <p className="text-zinc-400">Explore my latest projects and their features.</p>
+
+            <div className={`space-y-4 transition-all duration-300 ${showProjects ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
               {Object.entries(projects).map(([key, project]) => (
                 <div key={key} className="space-y-2">
                   <button
@@ -146,9 +159,7 @@ export default function Home() {
             >
               Technologies & Platforms
             </button>
-            <p className="text-zinc-400">
-              Explore the technologies and platforms I&apos;ve worked with, from frontend to backend and tools.
-            </p>
+            <p className="text-zinc-400">Explore the technologies and platforms I&apos;ve worked with, from frontend to backend and tools.</p>
 
             {showTech && (
               <div className="space-y-4 mt-4">
@@ -164,8 +175,6 @@ export default function Home() {
               </div>
             )}
           </div>
-          
-          {/* Remove entire Contact Me Section */}
         </section>
       </div>
     </main>
