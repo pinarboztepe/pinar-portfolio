@@ -34,9 +34,9 @@ export default function Home() {
   return (
     <main className="min-h-screen p-4 sm:p-8 md:p-24 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 relative flex">
       <MouseGlow />
-      <div className="max-w-7xl mx-auto relative grid lg:grid-cols-[400px,1fr] gap-8">
+      <div className="max-w-7xl mx-auto relative">
         {/* Left Column - Profile */}
-        <section className="lg:sticky lg:top-24 lg:h-fit">
+        <section className="lg:fixed lg:w-[400px] text-left lg:top-1/2 lg:-translate-y-1/2">
           <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6 md:mb-8 mx-auto lg:mx-0">
             <Image
               src="/images/pinar_profile.jpg"
@@ -87,7 +87,7 @@ export default function Home() {
         </section>
 
         {/* Right Column - Content */}
-        <section className="space-y-16 py-24">
+        <section className="space-y-16 lg:ml-[600px] py-24 lg:max-w-[600px]">
           <AboutMe showAbout={showAbout} setShowAbout={setShowAbout} />
           <Projects 
             showProjects={showProjects}
@@ -100,5 +100,5 @@ export default function Home() {
         </section>
       </div>
     </main>
-  );
+);
 }
