@@ -1,4 +1,6 @@
 "use client";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 
 import Image from "next/image";
 
@@ -7,6 +9,7 @@ interface Project {
   shortDesc: string;
   fullDesc: string;
   image: string;
+  github?: string;
 }
 
 interface ProjectsProps {
@@ -17,12 +20,12 @@ interface ProjectsProps {
   projects: Record<string, Project>;
 }
 
-export default function Projects({ 
-  showProjects, 
-  setShowProjects, 
-  selectedProject, 
+export default function Projects({
+  showProjects,
+  setShowProjects,
+  selectedProject,
   setSelectedProject,
-  projects 
+  projects
 }: ProjectsProps) {
   return (
     <div>
@@ -64,6 +67,10 @@ export default function Projects({
                   </div>
                 </div>
                 <p className="text-zinc-400 text-sm mt-4">{project.fullDesc}</p>
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-zinc-100 hover:text-zinc-400 hover:scale-110 transition-all duration-300" ><FontAwesomeIcon icon={faGithubSquare} size="2x" />
+                  </a>
+                )}
               </>
             )}
           </div>

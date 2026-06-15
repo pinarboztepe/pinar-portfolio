@@ -19,13 +19,13 @@ export default function Technologies({ showTech, setShowTech }: TechnologiesProp
       {showTech && (
         <div className="space-y-4 mt-4">
           <p className="text-zinc-400">
-            <span className="text-zinc-100 font-mono">Frontend:</span> JavaScript, React, Next.js, HTML5, CSS, Tailwind CSS, Figma.
+            <span className="text-zinc-100 font-mono">Frontend:</span> JavaScript, TypeScript, React, Next.js, HTML5, CSS, Tailwind CSS.
           </p>
           <p className="text-zinc-400">
-            <span className="text-zinc-100 font-mono">Backend:</span> Node.js, Ruby, Ruby on Rails, SQL, API integration.
+            <span className="text-zinc-100 font-mono">Backend:</span> Node.js, PostgreSQL, SQL, REST APIs.
           </p>
           <p className="text-zinc-400">
-            <span className="text-zinc-100 font-mono">Tools:</span> Git, GitHub, Heroku, Cloudinary, Bootstrap, PostgreSQL, Cursor AI, Trae AI.
+            <span className="text-zinc-100 font-mono">Tools:</span> Git, GitHub, Docker, Vercel, Figma, Cloudinary, Claude Code, Cursor.
           </p>
         </div>
       )}

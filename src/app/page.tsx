@@ -8,26 +8,28 @@ import Projects from '../components/Projects';
 import Technologies from '../components/Technologies';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [showAbout, setShowAbout] = useState(false);
   const [showTech, setShowTech] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
-  
+
   const projects = {
     vempo: {
       name: "Vempo",
-      shortDesc: "A comprehensive vendor management platform.",
+      shortDesc: "An interactive platform that turns music into synchronized visual art.",
       fullDesc: "This pioneering platform seamlessly fuses music and visual artistry, providing a transformative canvas where sound and sight converge. Immerse yourself in the creative process as you craft and personalize dynamic, synchronized shapes that dance harmoniously with your uploaded music.",
-      image: "/images/vempo.png"
+      image: "/images/vempo.png",
+      github: "https://github.com/pinarboztepe/Vempo"
     },
     sparePals: {
       name: "Spare Pals",
-      shortDesc: "An innovative platform for spare parts management.",
+      shortDesc: "A booking platform for renting companions for daily activities and outings.",
       fullDesc: "Spare Pals offers a unique service catering to various needs, whether for leisurely activities, daily outings, or even hospital visits. The platform provides a seamless booking system where users can check availability and select specific dates and hours needed.",
-      image: "/images/spare_pals.png"
+      image: "/images/spare_pals.png",
+      github: "https://github.com/pinarboztepe/spare_pals"
     }
   };
 
@@ -61,7 +63,7 @@ export default function Home() {
 
           <div className="flex space-x-6 mt-4 justify-center lg:justify-start">
             <div className="flex items-center">
-              <span className="text-zinc-100  flex items-center cursor-pointer">
+              <span className="text-zinc-100  flex items-center">
                 <FontAwesomeIcon icon={faLocationDot} size="lg" />
                 <span className="ml-2 text-base">London</span>
               </span>
@@ -83,13 +85,22 @@ export default function Home() {
             >
               <FontAwesomeIcon icon={faLinkedin} size="2x" />
             </a>
+            <a
+              href="mailto:hello@pinarboztepe.com"
+              className="text-zinc-100 hover:text-zinc-400 hover:scale-110 transition-all duration-300"
+            >
+              <FontAwesomeIcon icon={faEnvelope} size="2x" />
+            </a>
+          </div>
+          <div className="text-zinc-100 text-sm">
+            hello@pinarboztepe.com
           </div>
         </section>
 
         {/* Right Column - Content */}
         <section className="space-y-16 lg:ml-[600px] py-24 lg:max-w-[600px]">
           <AboutMe showAbout={showAbout} setShowAbout={setShowAbout} />
-          <Projects 
+          <Projects
             showProjects={showProjects}
             setShowProjects={setShowProjects}
             selectedProject={selectedProject}
@@ -100,5 +111,5 @@ export default function Home() {
         </section>
       </div>
     </main>
-);
+  );
 }
