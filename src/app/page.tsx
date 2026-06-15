@@ -46,6 +46,7 @@ export default function Home() {
               fill
               className="rounded-full object-cover shadow-lg border-2 border-zinc-100"
               priority
+              sizes="192px"
             />
           </div>
 
